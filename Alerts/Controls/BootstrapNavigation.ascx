@@ -2,7 +2,7 @@
 
 <asp:PlaceHolder runat="server" ID="phReturnTo" Visible="false">
     <div class="mb-3">
-        <asp:HyperLink runat="server" ID="hypReturnTo">&larr; Return to main menu</asp:HyperLink>
+        <strong><asp:HyperLink runat="server" ID="hypReturnTo">&larr; Return to Main Menu</asp:HyperLink></strong>
     </div>
 </asp:PlaceHolder>
 
