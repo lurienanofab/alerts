@@ -1,0 +1,45 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<!--
+  For more information on how to configure your ASP.NET application, please visit
+  http://go.microsoft.com/fwlink/?LinkId=169433
+  -->
+<configuration>
+  <appSettings>
+    <add key="MongoConnectionString" value="xxxxx" />
+  </appSettings>
+
+  <connectionStrings>
+    <add name="cnSselData" connectionString="xxxxx" providerName="System.Data.SqlClient"/>
+  </connectionStrings>
+  
+  <system.web>
+    <compilation targetFramework="4.8" />
+    <httpRuntime targetFramework="4.8" />
+    
+    <authentication mode="Forms">
+      <forms name="sselAuth.cookie" path="/" loginUrl="/login?ReturnServer=ssel-apps.eecs.umich.edu" timeout="480" protection="All" slidingExpiration="true" domain="umich.edu" cookieless="UseCookies" />
+    </authentication>
+    
+    <authorization>
+      <deny users="?" />
+    </authorization>
+    
+    <machineKey compatibilityMode="Framework20SP2" validationKey="39B2D534D5E12458A06EC963D1AF5E032DDEA333EDEB79E9010DFABCB79FFD39E2900221EEA4F5A68AD00ADF67AE1AD241049DA7D8CA0EF81D8ECFC2F500A4B7" decryptionKey="9246F03FDA0FAEFE59AF720C4B80D523DE31DCCE029DB7E7" validation="SHA1" decryption="3DES" />
+    
+    <customErrors mode="Off" />
+  </system.web>
+  
+  <system.webServer>
+    <handlers>
+      <add verb="*" path="alerts.json" name="AlertsHandler" type="Alerts.AlertsHandler" />
+    </handlers>
+  </system.webServer>
+  
+  <location path="alerts.json">
+    <system.web>
+      <authorization>
+        <allow users="*" />
+      </authorization>
+    </system.web>
+  </location>
+</configuration>
